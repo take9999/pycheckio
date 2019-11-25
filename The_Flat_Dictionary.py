@@ -11,7 +11,11 @@ def flatten(dictionary):
         else:
             print("not dict")
 
-    return recurse_dict(dictionary)
+    for dk, dv in dictionary.items():
+        result = recurse_dict(dv, parent_key=dk)
+        print(result)
+
+    return ""
 
 
 if __name__ == '__main__':
