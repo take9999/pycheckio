@@ -1,21 +1,32 @@
+import collections
+
 def flatten(dictionary):
     sep = "/"
+    obj = {}
 
     def recurse_dict(t, parent_key=""):
         if isinstance(t, dict):
             for k, v in t.items():
                 if isinstance(v, dict):
                     recurse_dict(v, parent_key + sep + k)
+                elif v == {}:
+                    obj[parent_key + sep + k] = {}
                 else:
-                    return {parent_key + sep + k: v}
+                    obj[parent_key + sep + k] = v
         else:
             print("not dict")
 
     for dk, dv in dictionary.items():
-        result = recurse_dict(dv, parent_key=dk)
-        print(result)
+        if isinstance(dv, dict):
+            recurse_dict(dv, parent_key=dk)
+        elif dv == {}:
+            obj[dk] = {}
+        else:
+            obj[dk] = dv
 
-    return ""
+    print(obj)
+
+    return obj
 
 
 if __name__ == '__main__':
