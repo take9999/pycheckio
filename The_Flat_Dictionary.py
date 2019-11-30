@@ -1,30 +1,34 @@
-import collections
-
 def flatten(dictionary):
     sep = "/"
     obj = {}
 
     def recurse_dict(t, parent_key=""):
-        if isinstance(t, dict):
+        '''
+        dictionaryの最も深い階層まで探索しながら、
+        親のkeyをsep="/"でマージした文字列でkeyを更新する。
+        最も深い階層まで探索が終わったら、
+        obj(flatten関数に定義したオブジェクト）へkeyとvalueを代入する。
+        :param t: value of dictionary
+        :param parent_key: parent_key name
+        :return: not return
+        '''
+
+        # t is empty
+        if not t:
+            obj[parent_key] = ""
+        else:
             for k, v in t.items():
                 if isinstance(v, dict):
                     recurse_dict(v, parent_key + sep + k)
-                elif v == {}:
-                    obj[parent_key + sep + k] = {}
                 else:
                     obj[parent_key + sep + k] = v
-        else:
-            print("not dict")
 
+    # dictionaryの中身を一つずつ確認し、value(dv)がdict形式の場合は、recurse_dictを実行
     for dk, dv in dictionary.items():
         if isinstance(dv, dict):
             recurse_dict(dv, parent_key=dk)
-        elif dv == {}:
-            obj[dk] = {}
         else:
             obj[dk] = dv
-
-    print(obj)
 
     return obj
 
