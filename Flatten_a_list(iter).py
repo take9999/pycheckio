@@ -1,5 +1,13 @@
 def flat_list(array):
-    return array
+    result = []
+
+    def recurse_list(target):
+        for t in target:
+            print(t)
+
+    recurse_list(array)
+
+    return iter(result)
 
 
 if __name__ == '__main__':
