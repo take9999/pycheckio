@@ -3,11 +3,22 @@ def flat_list(array):
 
     def recurse_list(target):
         for t in target:
-            print(t)
+            if isinstance(t, int):
+                result.append(t)
+            else:
+                recurse_list(t)
 
     recurse_list(array)
+    # print(result)
 
     return iter(result)
+
+# from collections import Iterable
+# def flat_list(L):
+#     if isinstance(L, Iterable):
+#         for i in L: yield from [e for e in flat_list(i)]
+#     else:
+#         yield L
 
 
 if __name__ == '__main__':
