@@ -1,4 +1,7 @@
 def count_consecutive_summers(num):
+    sum = 0
+    for n in range(num // 2 + 1):
+        pass
 
     return None
 
