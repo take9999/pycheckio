@@ -1,9 +1,18 @@
 def count_consecutive_summers(num):
-    sum = 0
-    for n in range(num // 2 + 1):
-        pass
+    result = []
+    result.append([num])
 
-    return None
+    for_end_num = (num // 2 + 1)
+
+    for i in range(1, for_end_num+1):
+        for j in range(i+1, for_end_num+1):
+            sum_i2j = int((i+j) * (j-(i-1)) / 2)
+            if sum_i2j > num:
+                break
+            elif sum_i2j == num:
+                result.append(([x for x in range(i, j)]))
+    print(result)
+    return len(result)
 
 
 if __name__ == '__main__':
