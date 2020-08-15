@@ -1,6 +1,14 @@
 import datetime
 from calendar import monthrange
 
+
+# other solution
+def most_frequent_days(a):
+    # your code here
+    from calendar import weekday,day_name
+    return [day_name[i] for i in sorted({weekday(a,1,1),weekday(a,12,31)})]
+
+
 def get_most_frequent_weekdays(year_data):
     # count for each weekday
     cnt_monday = 0
