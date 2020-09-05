@@ -11,10 +11,11 @@ MORSE = {'a': '.-',    'b': '-...',  'c': '-.-.',
          '4': '....-', '5': '.....', '6': '-....',
          '7': '--...', '8': '---..', '9': '----.',
          ' ': ' '
-        }
+         }
 
 
 def morse_encoder(text):
+    text = text.lower()
     result = []
     for t in text:
         result.append(MORSE[t])
@@ -24,9 +25,6 @@ def morse_encoder(text):
 if __name__ == '__main__':
     print("Example:")
     print(morse_encoder('some text'))
-
-    #These "asserts" using only for self-checking and not necessary for auto-testing
     assert morse_encoder("some text") == "... --- -- .   - . -..- -"
     assert morse_encoder("2018") == "..--- ----- .---- ---.."
     assert morse_encoder("It was a good day") == ".. -   .-- .- ...   .-   --. --- --- -..   -.. .- -.--"
-
